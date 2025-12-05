@@ -5,8 +5,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using ConsoleRunnerX.Models;
 
-namespace ConsoleRunnerX.User
+namespace ConsoleRunnerX.Services
 {
     public class UserService
     {
