@@ -1,5 +1,6 @@
-﻿using ConsoleRunnerX.User;
-using MyUser = ConsoleRunnerX.User.User;
+﻿using ConsoleRunnerX.Menus; 
+using ConsoleRunnerX.Services;
+using MyUser = ConsoleRunnerX.Models.User;
 
 
 namespace ConsoleRunnerX

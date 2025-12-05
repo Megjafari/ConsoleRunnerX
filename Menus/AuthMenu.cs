@@ -1,11 +1,13 @@
-﻿using Spectre.Console;
+﻿using ConsoleRunnerX.Services;
+using Spectre.Console;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleRunnerX.Models;    
 
-namespace ConsoleRunnerX.User
+namespace ConsoleRunnerX.Menus
 {
     public class AuthMenu
     {
