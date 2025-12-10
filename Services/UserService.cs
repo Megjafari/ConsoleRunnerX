@@ -47,6 +47,12 @@ namespace ConsoleRunnerX.Services
                 return;
             }
             var json = File.ReadAllText(FilePath);
+            // KORRIGERING: Kontrollera om JSON-strängen är tom/null/mellanslag
+            if (string.IsNullOrWhiteSpace(json))
+            {
+                _users = new List<User>();
+                return; // Gå ut och behåll tom lista
+            }
             _users = JsonSerializer.Deserialize<List<User>>(json)!;
         }
         private void SaveUsers()
@@ -86,6 +92,15 @@ namespace ConsoleRunnerX.Services
             {
                 // Returnera en tom lista vid fel (t.ex. korrupt fil)
                 return new List<User>();
+            }
+        }
+        public void UpdateUserHighScore(User updateUser)
+        {
+            var existingUser = _users.FirstOrDefault(u => u.Username == updateUser.Username);
+            if (existingUser != null)
+            {
+                existingUser.HighScore = updateUser.HighScore;
+                SaveUsers();
             }
         }
     }
