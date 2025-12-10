@@ -58,6 +58,35 @@ namespace ConsoleRunnerX.Services
         {
             return Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(password)));
         }
+        public static List<User> LoadAllUsers()
+        {
+            const string FilePath = "users.json";
 
+            if (!File.Exists(FilePath))
+            {
+                return new List<User>();
+            }
+
+            try
+            {
+                var json = File.ReadAllText(FilePath);
+
+                // Returnera en tom lista om filen är tom eller ogiltig JSON
+                if (string.IsNullOrWhiteSpace(json))
+                {
+                    return new List<User>();
+                }
+
+                // Deserialisera direkt. Vi använder System.Text.Json.JsonSerializer.
+                var allUsers = System.Text.Json.JsonSerializer.Deserialize<List<User>>(json);
+
+                return allUsers ?? new List<User>();
+            }
+            catch
+            {
+                // Returnera en tom lista vid fel (t.ex. korrupt fil)
+                return new List<User>();
+            }
+        }
     }
 }
