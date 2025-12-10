@@ -1,6 +1,7 @@
 ﻿using ConsoleRunnerX.Menus; 
 using ConsoleRunnerX.Services;
 using MyUser = ConsoleRunnerX.Models.User;
+using ConsoleRunnerX.Engine;
 
 
 namespace ConsoleRunnerX
@@ -13,11 +14,19 @@ namespace ConsoleRunnerX
             var authMenu = new AuthMenu(userService);
 
             
-            MyUser loggedInUser = authMenu.Show();
+            while (true)
+            {
+               
+                MyUser? loggedInUser = authMenu.Show(userService);
 
-            // Efter login startar du spelet
-            //var game = new RunnerGame(loggedInUser, userService);
-            //game.Start();
+                if (loggedInUser != null)
+                {
+                    
+                    MainMenu.Show(loggedInUser);
+                }
+
+                
+            }
         }
     }
 }

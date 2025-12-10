@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ConsoleRunnerX.Models;
 using ConsoleRunnerX.Services;
 using Spectre.Console;
+using ConsoleRunnerX.Engine;
 
 namespace ConsoleRunnerX.Menus
 {
@@ -36,12 +37,7 @@ namespace ConsoleRunnerX.Menus
                 switch (selection)
                 {
                     case "Start Game":
-                        AnsiConsole.Clear();
-                        AnsiConsole.MarkupLine("[bold blue] The game starts soon...[/]");
-                        AnsiConsole.WriteLine("Implementera Game.cs nästa gång!");
-                        AnsiConsole.MarkupLine("\nPress any [green]Key[/] to go back to the menu...");
-                        Console.ReadKey(true);
-                        // Game.Run(loggedInUser); 
+                        Game.Run(loggedInUser); 
                         break;
 
                     case "Show Highscores":

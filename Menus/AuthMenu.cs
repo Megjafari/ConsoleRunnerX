@@ -16,7 +16,7 @@ namespace ConsoleRunnerX.Menus
         {
             _userService = userService;
         }
-        public User Show()
+        public User Show(UserService userService)
         {
             while (true)
             {
